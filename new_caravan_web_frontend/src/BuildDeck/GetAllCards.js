@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Test from './Test';
+import TopRow from './TopRow';
+import BottomRow from './BottomRow';
 const GetAllCards = (props) => {
   const [allCards, setAllCards] = useState();
   useEffect(() => {
@@ -15,6 +16,11 @@ const GetAllCards = (props) => {
       });
   }, []);
 
-  return <Test value={allCards} />;
+  return (
+    <>
+      <TopRow value={allCards} />
+      <BottomRow allCards={allCards} />
+    </>
+  );
 };
 export default GetAllCards;
