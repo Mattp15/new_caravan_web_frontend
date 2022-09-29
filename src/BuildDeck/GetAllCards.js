@@ -7,7 +7,7 @@ export const CardContext = React.createContext();
 const GetAllCards = (props) => {
   const [allCards, setAllCards] = useState();
   useEffect(() => {
-    fetch('http://localhost:3000/cards/getCards', {
+    fetch(process.env.REACT_APP_CARAVAN_API + '/cards/getManyByPattern/set/Standard', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -15,7 +15,7 @@ const GetAllCards = (props) => {
       .then((data) => {
         setAllCards(data.foundData);
       });
-  }, []);
+  },[]);
 
   return (
     <CardContext.Provider value={allCards}>
