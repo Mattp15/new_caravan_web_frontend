@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import TopRow from './TopRow';
 import BottomRow from './BottomRow';
+
+export const CardContext = React.createContext();
+
 const GetAllCards = (props) => {
   const [allCards, setAllCards] = useState();
   useEffect(() => {
@@ -15,10 +18,12 @@ const GetAllCards = (props) => {
   }, []);
 
   return (
-    <>
-      <TopRow allCards={allCards} />
-      <BottomRow allCards={allCards} />
-    </>
+    <CardContext.Provider value={allCards}>
+      <>
+        <TopRow />
+        <BottomRow />
+      </>
+    </CardContext.Provider>
   );
 };
 export default GetAllCards;
