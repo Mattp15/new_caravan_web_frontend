@@ -4,7 +4,7 @@ import BottomRow from './BottomRow';
 const GetAllCards = (props) => {
   const [allCards, setAllCards] = useState();
   useEffect(() => {
-    fetch('http://localhost:3000/cards/getCards', {
+    fetch(process.env.REACT_APP_CARAVAN_API + '/cards/getManyByPattern/set/Standard', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -14,7 +14,7 @@ const GetAllCards = (props) => {
           setAllCards(data.foundData);
         }, 300);
       });
-  }, []);
+  },[]);
 
   return (
     <>
