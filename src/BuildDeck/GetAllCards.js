@@ -10,15 +10,13 @@ const GetAllCards = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setTimeout(() => {
-          setAllCards(data.foundData);
-        }, 300);
+        setAllCards(data.foundData);
       });
   }, []);
 
   return (
     <>
-      <TopRow value={allCards} />
+      <TopRow allCards={allCards} />
       <BottomRow allCards={allCards} />
     </>
   );

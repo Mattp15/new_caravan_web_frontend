@@ -1,4 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import CardImage from '../Card/CardImage';
+const BottomRow = (props) => {
+  const [allCards, setAllCards] = useState([]);
+  useEffect(() => {}, [props.allCards]);
 
-const BottomRow = (props) => {};
+  return (
+    <>
+      <CardImage oneCard={allCards} />
+    </>
+  );
+};
 export default BottomRow;
