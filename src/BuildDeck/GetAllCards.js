@@ -14,7 +14,7 @@ const GetAllCards = (props) => {
           setAllCards(data.foundData);
         }, 300);
       });
-  }, []);
+  },[]);
 
   return (
     <>
