@@ -13,10 +13,7 @@ const GetAllCards = (props) => {
         console.log('here');
         const jsonResponse = await response.json();
         const { foundData } = jsonResponse;
-        setTimeout(() => {
-          setAllCards(foundData);
-          console.log(foundData);
-        }, 2000);
+        setAllCards(foundData);
       }
     } catch (error) {
       console.log(error);
