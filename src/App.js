@@ -56,22 +56,16 @@ const App = () => {
   
   return (
     <Router>
-      <Routes>
-        <Route path='/' element={<Landing />} />
-      </Routes>
       <UserContext.Provider value={{ user, setUser }}>
-      <Routes>
-        <Route path='login' element={<Login />} />
-      </Routes>
+        <ContextContainer.Provider value={{ allCards, setAllCards }}>
+          <Routes>
+            <Route path='/' element={<Landing />} />
+            <Route path='login' element={<Login />} />
+            <Route path='build' element={<GetAllCards />} />
+            <Route path='*' element={<div><h2>ERROR 404</h2><p>page not found</p></div>} />
+          </Routes>  
+        </ContextContainer.Provider>
       </UserContext.Provider>
-      <ContextContainer.Provider value={{ allCards, setAllCards }}>
-      <Routes>
-        <Route path='build' element={<GetAllCards />} />
-      </Routes>
-      </ContextContainer.Provider>
-      <Routes>
-        <Route path='*' element={<div><h2>ERROR 404</h2><p>page not found</p></div>} />
-      </Routes>  
     </Router>
   );
 };
