@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { CardContext } from './GetAllCards';
+import { ContextContainer } from '../App';
 const TopRow = (props) => {
-  const allCards = useContext(CardContext);
+  const { allCards } = useContext(ContextContainer);
   return <div>top row {JSON.stringify(allCards)}</div>;
 };
 

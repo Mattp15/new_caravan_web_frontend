@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import TopRow from './TopRow';
 import BottomRow from './BottomRow';
-import { Login } from '../Login/Login';
-
-export const CardContext = React.createContext();
+import { ContextContainer } from '../App';
 
 const GetAllCards = (props) => {
-  const [allCards, setAllCards] = useState();
-
+  const { allCards, setAllCards } = useContext(ContextContainer);
   const handleClick = async () => {
     try {
       const response = await fetch('http://localhost:3000/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
@@ -28,24 +25,21 @@ const GetAllCards = (props) => {
 
   return (
     <>
-      {/* <CardContext.Provider value={allCards}>
-        <button
-          onClick={() => {
-            handleClick();
-          }}
-        >
-          GET CARDS
-        </button>
-        {allCards ? (
-          <>
-            <TopRow />
-            <BottomRow />{' '}
-          </>
-        ) : (
-          ''
-        )}
-        <Login />
-      </CardContext.Provider> */}
+      <button
+        onClick={() => {
+          handleClick();
+        }}
+      >
+        GET CARDS
+      </button>
+      {allCards ? (
+        <>
+          <TopRow />
+          <BottomRow />{' '}
+        </>
+      ) : (
+        ''
+      )}
     </>
   );
 };

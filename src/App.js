@@ -45,9 +45,11 @@ const App = () => {
           <Route path='/user/login' element={<Login />} />
         </Routes>
       </ContextContainer.Provider>
-      <Routes>
-        <Route path='build' element={<GetAllCards />} />
-      </Routes>
+      <ContextContainer.Provider value={{ allCards, setAllCards }}>
+        <Routes>
+          <Route path='build' element={<GetAllCards />} />
+        </Routes>
+      </ContextContainer.Provider>
     </Router>
   );
 };

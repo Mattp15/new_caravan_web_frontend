@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CardImage from '../Card/CardImage';
-import { CardContext } from './GetAllCards';
+import { ContextContainer } from '../App';
 
 const BottomRow = (props) => {
-  const allCards = useContext(CardContext);
+  const { allCards } = useContext(ContextContainer);
 
   return (
     <div>
