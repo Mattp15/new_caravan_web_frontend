@@ -3,13 +3,12 @@ import CardImage from '../Card/CardImage';
 import { CardContext } from './GetAllCards';
 
 const BottomRow = (props) => {
-  useEffect(() => {
-    console.log(props.allCards);
-  }, [props.allCards]);
+  const allCards = useContext(CardContext);
+
   return (
     <div>
-      bottom row {JSON.stringify(props)}
-      <CardImage value={props.allCards} />
+      bottom row {JSON.stringify(allCards)}
+      {/* <CardImage value={allCards} /> */}
     </div>
   );
 };

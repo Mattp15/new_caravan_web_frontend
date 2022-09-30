@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-
+import React, { useContext } from 'react';
+import { CardContext } from './GetAllCards';
 const TopRow = (props) => {
-  return <div>top row {JSON.stringify(props)}</div>;
+  const allCards = useContext(CardContext);
+  return <div>top row {JSON.stringify(allCards)}</div>;
 };
 
 export default TopRow;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import TopRow from './TopRow';
 import BottomRow from './BottomRow';
+import { Login } from '../Login/Login';
 
 export const CardContext = React.createContext();
 
@@ -14,8 +15,11 @@ const GetAllCards = (props) => {
       if (response.ok) {
         console.log('here');
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
-        setAllCards(jsonResponse.foundData);
+        const { foundData } = jsonResponse;
+        setTimeout(() => {
+          setAllCards(foundData);
+          console.log(foundData);
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
@@ -24,21 +28,24 @@ const GetAllCards = (props) => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          handleClick();
-        }}
-      >
-        GET CARDS
-      </button>
-      {allCards ? (
-        <>
-          <TopRow allCards={allCards} />
-          <BottomRow allCards={allCards} />{' '}
-        </>
-      ) : (
-        ''
-      )}
+      {/* <CardContext.Provider value={allCards}>
+        <button
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          GET CARDS
+        </button>
+        {allCards ? (
+          <>
+            <TopRow />
+            <BottomRow />{' '}
+          </>
+        ) : (
+          ''
+        )}
+        <Login />
+      </CardContext.Provider> */}
     </>
   );
 };
