@@ -1,7 +1,8 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { ContextContainer } from '../App';
 const TopRow = (props) => {
-    return <div>top row {JSON.stringify(props)}</div>;
+  const { allCards } = useContext(ContextContainer);
+  return <div>top row {JSON.stringify(allCards)}</div>;
 };
 
 export default TopRow;

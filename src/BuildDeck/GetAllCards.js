@@ -1,25 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import TopRow from './TopRow';
 import BottomRow from './BottomRow';
+import { ContextContainer } from '../App';
+
 const GetAllCards = (props) => {
-  const [allCards, setAllCards] = useState();
-  useEffect(() => {
-    fetch(process.env.REACT_APP_CARAVAN_API + '/cards/getManyByPattern/set/Standard', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setTimeout(() => {
-          setAllCards(data.foundData);
-        }, 300);
-      });
-  },[]);
+  const { allCards, setAllCards } = useContext(ContextContainer);
+  const handleClick = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
+      console.log(response);
+      if (response.ok) {
+        console.log('here');
+        const jsonResponse = await response.json();
+        const { foundData } = jsonResponse;
+        setAllCards(foundData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
-      <TopRow value={allCards} />
-      <BottomRow allCards={allCards} />
+      <button
+        onClick={() => {
+          handleClick();
+        }}
+      >
+        GET CARDS
+      </button>
+      {allCards ? (
+        <>
+          <TopRow />
+          <BottomRow />{' '}
+        </>
+      ) : (
+        ''
+      )}
     </>
   );
 };

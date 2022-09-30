@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import UserContext from "../contexts/UserContext";
+// import UserContext from "../contexts/UserContext";
+import { UserContext } from "../App";
 
 const Login = () => {
-    const ctx = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [gTag, setGtag] = useState('');
     const [pass, setPass] = useState('');
 
-    const {user, userSet} = ctx;
-
     const handleSubmit = async (e) => {
-        console.log(ctx);
+        console.log(setUser);
         e.preventDefault();
         fetch(process.env.REACT_APP_CARAVAN_API + '/user/login', {
             method: 'POST',
@@ -22,7 +21,7 @@ const Login = () => {
           }).then((response) => response.json())
           .then((data) => {
             console.log(data);
-            userSet(data.user);
+            setUser(data.user);
             console.log(user);
           }).catch((err)=>{console.log({err})});
     };
