@@ -6,24 +6,40 @@ export const CardContext = React.createContext();
 
 const GetAllCards = (props) => {
   const [allCards, setAllCards] = useState();
-  useEffect(() => {
-    fetch(process.env.REACT_APP_CARAVAN_API + '/cards/getManyByPattern/set/Standard', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setAllCards(data.foundData);
-      });
-  },[]);
+
+  const handleClick = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
+      console.log(response);
+      if (response.ok) {
+        console.log('here');
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
+        setAllCards(jsonResponse.foundData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <CardContext.Provider value={allCards}>
-      <>
-        <TopRow />
-        <BottomRow />
-      </>
-    </CardContext.Provider>
+    <>
+      <button
+        onClick={() => {
+          handleClick();
+        }}
+      >
+        GET CARDS
+      </button>
+      {allCards ? (
+        <>
+          <TopRow allCards={allCards} />
+          <BottomRow allCards={allCards} />{' '}
+        </>
+      ) : (
+        ''
+      )}
+    </>
   );
 };
 export default GetAllCards;

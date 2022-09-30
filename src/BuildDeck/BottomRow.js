@@ -3,6 +3,14 @@ import CardImage from '../Card/CardImage';
 import { CardContext } from './GetAllCards';
 
 const BottomRow = (props) => {
-  return <div>bottom row {JSON.stringify(props)}</div>;
+  useEffect(() => {
+    console.log(props.allCards);
+  }, [props.allCards]);
+  return (
+    <div>
+      bottom row {JSON.stringify(props)}
+      <CardImage value={props.allCards} />
+    </div>
+  );
 };
 export default BottomRow;
