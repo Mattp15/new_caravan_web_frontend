@@ -16,7 +16,7 @@ const App = () => {
 
   const handleClick = async () => {
     try {
-      const response = await fetch('http://localhost:3000/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
+      const response = await fetch(process.env.REACT_APP_CARAVAN_API + '/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
       console.log(response);
       if (response.ok) {
         console.log('here');
@@ -36,21 +36,15 @@ const App = () => {
   }, [user]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Landing />} />
-      </Routes>
-      <ContextContainer.Provider value={{ user, setUser }}>
+    <ContextContainer.Provider value={{ user, setUser, allCards, setAllCards }}>
+      <Router>
         <Routes>
+          <Route path='/' element={<Landing />} />
           <Route path='/user/login' element={<Login />} />
-        </Routes>
-      </ContextContainer.Provider>
-      <ContextContainer.Provider value={{ allCards, setAllCards }}>
-        <Routes>
           <Route path='build' element={<GetAllCards />} />
         </Routes>
-      </ContextContainer.Provider>
-    </Router>
+      </Router>
+    </ContextContainer.Provider>
   );
 };
 

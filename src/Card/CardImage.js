@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const CardImage = (props) => {
-  const [card, setCard] = useState();
-  //   return <li>{props.value.suit}</li>;
+export const CardImage = ({ src, name, suit }) => {
+  return <img src={src} alt={`${name} of ${suit}s`} />;
 };
-export default CardImage;
