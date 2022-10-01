@@ -20,6 +20,13 @@ export const DeckBuilding = (props) => {
     console.log(building, 'topRow');
     setBuilding((prev) => prev.filter((fil) => fil._id !== target._id));
   };
+  const handleSave = () => {
+    if (building.length >= 32) {
+      setUsersDeck(building);
+      //redirect?
+    }
+    console.log(usersDeck, 'usersDeck');
+  };
   return (
     <div>
       <h1>toprow</h1>
@@ -30,7 +37,7 @@ export const DeckBuilding = (props) => {
               const { _id, name, value, suit, set, ismodifier, face, back } = card;
               return (
                 <li key={_id + index} ismodifier={ismodifier}>
-                  <CardImage onClick={handleClickTop} name={name} value={value} suit={suit} set={set} face={face} back={back} src={`${process.env.REACT_APP_CARAVAN_API}/images/${face}`} alt={`${name}of${suit}`} card={card} row='top' />
+                  <CardImage onClick={handleClickTop} name={name} value={value} suit={suit} set={set} src={`${process.env.REACT_APP_CARAVAN_API}/images/${face}`} alt={`${name}of${suit}`} card={card} row='top' />
                 </li>
               );
             })
@@ -41,14 +48,16 @@ export const DeckBuilding = (props) => {
         {allUsersCards
           ? allUsersCards.map((card, index) => {
               const { _id, name, value, suit, set, ismodifier, face, back } = card;
+              const cardSide = building.includes(card) ? back + '.png' : face;
               return (
                 <li key={_id + index} ismodifier={ismodifier}>
-                  <CardImage onClick={handleClick} name={name} value={value} suit={suit} set={set} face={face} back={back} src={`${process.env.REACT_APP_CARAVAN_API}/images/${face}`} alt={`${name}of${suit}`} card={card} row='bottom' />
+                  <CardImage onClick={handleClick} name={name} value={value} suit={suit} set={set} src={`${process.env.REACT_APP_CARAVAN_API}/images/${cardSide}`} alt={`${name}of${suit}`} card={card} row='bottom' />
                 </li>
               );
             })
           : ''}
       </ul>
+      <button onClick={handleSave}>SaveDeck</button>
     </div>
   );
 };
