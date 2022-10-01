@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import TopRow from './TopRow';
-import BottomRow from './BottomRow';
+import { DeckBuilding } from './DeckBuilding';
 import { ContextContainer } from '../App';
 
 const GetAllCards = (props) => {
@@ -29,8 +28,7 @@ const GetAllCards = (props) => {
       </button>
       {allCards ? (
         <>
-          <TopRow />
-          <BottomRow />{' '}
+          <DeckBuilding />
         </>
       ) : (
         ''

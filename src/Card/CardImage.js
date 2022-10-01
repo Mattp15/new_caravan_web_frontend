@@ -1,13 +1,14 @@
 import React from 'react';
 
-export const CardImage = ({ src, name, suit, card, onClick }) => {
+export const CardImage = ({ src, name, suit, card, onClick, row }) => {
   return (
     <>
       <img
+        className={`card-${row}`}
         src={src}
         alt={`${name} of ${suit}`}
         onClick={() => {
-          onClick();
+          onClick(card);
         }}
       />
     </>

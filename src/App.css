@@ -36,21 +36,30 @@
     transform: rotate(360deg);
   }
 }
-.top-row,
 .bottom-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  height: auto;
+}
 li {
   list-style: none;
-  margin: 0.5vw;
 }
-.testing {
-  /* background-color: black; */
 
-  position: absolute;
-  top: 107px;
-  width: 184px;
-  height: 256px;
+.card-top {
+  width: 60px;
+  margin: -10px;
+  display: inline;
+  position: relative;
+}
+.card-bottom {
+  width: 100px;
+  margin: 0;
+  display: inline;
 }
