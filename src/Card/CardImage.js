@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const CardImage = ({ src, name, suit, card, onClick }) => {
   return (
-    <div
-      onClick={() => {
-        onClick(card);
-      }}
-    >
-      <img src={src} alt={`${name} of ${suit}`} />
-      <div className='testing' style={style.selected}></div>
-    </div>
+    <>
+      <img
+        src={src}
+        alt={`${name} of ${suit}`}
+        onClick={() => {
+          onClick();
+        }}
+      />
+    </>
   );
 };
 

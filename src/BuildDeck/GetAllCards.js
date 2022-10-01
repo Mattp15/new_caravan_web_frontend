@@ -7,10 +7,8 @@ const GetAllCards = (props) => {
   const { allCards, setAllCards } = useContext(ContextContainer);
   const handleClick = async () => {
     try {
-      const response = await fetch('http://localhost:3000/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
-      console.log(response);
+      const response = await fetch(process.env.REACT_APP_CARAVAN_API + '/cards/getCards', { method: 'GET', header: { 'Content-Type': 'application/json' } });
       if (response.ok) {
-        console.log('here');
         const jsonResponse = await response.json();
         const { foundData } = jsonResponse;
         setAllCards(foundData);

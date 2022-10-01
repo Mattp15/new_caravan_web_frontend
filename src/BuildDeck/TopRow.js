@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { ContextContainer } from '../App';
 import { CardImage } from '../Card/CardImage';
+
 const TopRow = (props) => {
-  const { allCards } = useContext(ContextContainer);
+  const { allCards, usersDeck, setUsersDeck } = useContext(ContextContainer);
   const handleClick = (target) => {
-    console.log(target);
+    console.log('topRow');
+    // setUsersDeck((prev) => prev.filter((fil) => fil._id !== target._id));
   };
   return (
     <div>
