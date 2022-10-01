@@ -3,6 +3,9 @@ import { ContextContainer } from '../App';
 import { CardImage } from '../Card/CardImage';
 const TopRow = (props) => {
   const { allCards } = useContext(ContextContainer);
+  const handleClick = (target) => {
+    console.log(target);
+  };
   return (
     <div>
       <h1>toprow</h1>
@@ -12,8 +15,7 @@ const TopRow = (props) => {
           const { _id, name, value, suit, set, ismodifier, face, back } = card;
           return (
             <li key={_id + index} ismodifier={ismodifier}>
-              {' '}
-              <CardImage name={name} value={value} suit={suit} set={set} face={face} back={back} src={`${process.env.REACT_APP_CARAVAN_API}/images/${face}`} alt={`${name}of${suit}`} />
+              <CardImage onClick={handleClick} name={name} value={value} suit={suit} set={set} face={face} back={back} src={`${process.env.REACT_APP_CARAVAN_API}/images/${face}`} alt={`${name}of${suit}`} card={card} />
             </li>
           );
         })}
