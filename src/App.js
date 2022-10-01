@@ -1,9 +1,11 @@
 // import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Landing, Login, Register, Logout, UserLayout } from './views';
+import { Landing, NotFound } from './views';
+import { UserRoutes } from './routes';
 import GetAllCards from './BuildDeck/GetAllCards';
 import React, { useState, useEffect } from 'react';
+
 // import UserContext from './contexts/UserContext';
 
 export const ContextContainer = React.createContext();
@@ -41,21 +43,9 @@ const App = () => {
         <ContextContainer.Provider value={{ allCards, setAllCards, usersDeck, setUsersDeck }}>
           <Routes>
             <Route path='/' element={<Landing />} />
-            <Route path='/user' element={<UserLayout />}>
-              <Route path='login' element={<Login />} />
-              <Route path='logout' element={<Logout />} />
-              <Route path='register' element={<Register />} />
-            </Route>
+            <Route path='user/*' element={<UserRoutes />} />
             <Route path='build' element={<GetAllCards />} />
-            <Route
-              path='*'
-              element={
-                <div>
-                  <h2>ERROR 404</h2>
-                  <p>page not found</p>
-                </div>
-              }
-            />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </ContextContainer.Provider>
       </UserContext.Provider>

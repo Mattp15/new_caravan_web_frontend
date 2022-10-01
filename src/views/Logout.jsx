@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
+
 
 const Logout = () => {
     const { user, setUser } = useContext(UserContext);
-  
+    const navigate = useNavigate();
+
     const handleClick = async (e) => {
         // console.log(setUser);
         e.preventDefault();
@@ -13,12 +16,14 @@ const Logout = () => {
                 headers: { 'Content-Type': 'application/json' },
             }).then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setUser(null);
-                console.log(user);
+                // console.log(user);
+                navigate('/');
             }).catch((err)=>{console.log({err})});
         } else
             console.log('user was not logged in');
+            navigate('/');
     };
 
     return (
