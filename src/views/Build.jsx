@@ -21,9 +21,9 @@ const Build = () => {
         return val;
     }
 
-    const findIndexOfCard = (card) => {
-        for (const idx in ownedCards) {
-            if (ownedCards[idx]._id === card._id) 
+    const findIndexOfCard = (card, array) => {
+        for (const idx in array) {
+            if (array[idx]._id === card._id) 
                 return idx;
         }
         return -1;
@@ -33,7 +33,7 @@ const Build = () => {
         ownedCards.sort( (a,b) => compareCards(a,b) );
         const tmp = [...cardsInDeck];
         deck.forEach(el => {
-            const pos = findIndexOfCard(el);
+            const pos = findIndexOfCard(el, ownedCards);
             if(pos !== -1)
                 tmp[pos] = true;
             else
@@ -42,8 +42,17 @@ const Build = () => {
         setCardsInDeck(tmp);
       }, []);
 
+      useEffect(() =>{
+        const tmp = {...user};
+        tmp.deck = cardsInDeck.map((el,idx) => {return el?ownedCards[idx]:null}).filter((el)=> el !== null);
+        setUser(tmp);
+      }, [cardsInDeck]);
+
     const handleClick = (idx) => {
+        //check if trying to add a duplicate card
         //toggle bool at cardsInDeck[idx] and store deck changes in database
+        if((findIndexOfCard(ownedCards[idx], deck) !== -1 ) && !cardsInDeck[idx])
+            return; 
         fetch(`${process.env.REACT_APP_CARAVAN_API}/user/deck/toggle/${id}/${ownedCards[idx]._id}`, {
             method: 'PUT',
             body: JSON.stringify({}),

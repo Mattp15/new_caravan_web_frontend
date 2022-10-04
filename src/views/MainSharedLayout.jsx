@@ -4,11 +4,15 @@ const MainSharedLayout = () => {
     return (
         <>
             <header>
-                <Link to='/'> Home </Link>
-                |
-                <Link to='/user'> User Management </Link>
-                |
-                <Link to='/build'> Build Your Deck </Link>
+                <nav>
+                    <Link to='/'> Home </Link>
+                    |
+                    <Link to='/user'> User Management </Link>
+                    |
+                    <Link to='/build'> Build Your Deck </Link>
+                    |
+                    <Link to='/game'> Play A Game </Link>
+                </nav>
             </header>
             <hr />
             <section>
