@@ -42,32 +42,20 @@ const App = () => {
       <UserContext.Provider value={{ user, setUser }}>
         <ContextContainer.Provider value={{ allCards, setAllCards, usersDeck, setUsersDeck }}>
           <Routes>
-<<<<<<< HEAD
-            <Route path='/' element={<Landing />} />
-            <Route path='/user' element={<UserLayout />} />
-
-            <Route path='login' element={<Login />} />
-            <Route path='register' element={<Register />} />
-            <Route path='logout' element={<Logout />} />
-            <Route path='build' element={<GetAllCards />} />
-            <Route
-              path='*'
-              element={
-                <div>
-                  <h2>ERROR 404</h2>
-                  <p>page not found</p>
-                </div>
-              }
-            />
-=======
-            <Route path='/' element={<MainSharedLayout />}> 
+            <Route path='/' element={<MainSharedLayout />}>
               <Route index element={<Landing />} />
               <Route path='user/*' element={<UserRoutes />} />
-              <Route path='build' element={<UserProtectedRoute user={user}><Build /></UserProtectedRoute>} />
+              <Route
+                path='build'
+                element={
+                  <UserProtectedRoute user={user}>
+                    <Build />
+                  </UserProtectedRoute>
+                }
+              />
               <Route path='buildold' element={<GetAllCards />} />
               <Route path='*' element={<NotFound />} />
             </Route>
->>>>>>> c15cca205c3a8b5d4b885a3fc16ecdf9fc8f1cdb
           </Routes>
         </ContextContainer.Provider>
       </UserContext.Provider>
