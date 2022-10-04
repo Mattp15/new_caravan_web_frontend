@@ -7,3 +7,7 @@ export {default as NotFound} from './NotFound';
 export {default as Build} from './Build';
 export {default as Delete} from './Delete';
 export {default as MainSharedLayout} from './MainSharedLayout';
+export {default as SelectGameType} from './SelectGameType';
+export {default as MatchPlayer} from './MatchPlayer';
+export {default as LocalGame} from './LocalGame';
+export {default as WebSocketGame} from './WebSocketGame';
