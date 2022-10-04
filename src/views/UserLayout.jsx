@@ -4,11 +4,13 @@ const UserLayout = () => {
     return (
         <>
             <header>
-                <Link to='/user/login'>login</Link>
+                <Link to='/user/login'> login </Link>
                 |
-                <Link to='/user/register'>register</Link>
+                <Link to='/user/register'> register </Link>
                 |
-                <Link to='/user/logout'>logout</Link>
+                <Link to='/user/logout'> logout </Link>
+                |
+                <Link to='/user/delete'> delete</Link>
             </header>
             <hr />
             <section>
