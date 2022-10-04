@@ -72,6 +72,7 @@ body {
   width: 1250px;
   margin: 0 auto;
   margin-top: 69px;
+  border-radius: 5px;
 }
 form {
   display: flex;
