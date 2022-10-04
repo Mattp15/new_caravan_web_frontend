@@ -41,11 +41,11 @@ const App = () => {
         <ContextContainer.Provider value={{ allCards, setAllCards, usersDeck, setUsersDeck }}>
           <Routes>
             <Route path='/' element={<Landing />} />
-            <Route path='/user' element={<UserLayout />}>
-              <Route path='login' element={<Login />} />
-              <Route path='logout' element={<Logout />} />
-              <Route path='register' element={<Register />} />
-            </Route>
+            <Route path='/user' element={<UserLayout />} />
+
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+            <Route path='logout' element={<Logout />} />
             <Route path='build' element={<GetAllCards />} />
             <Route
               path='*'
