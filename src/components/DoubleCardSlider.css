@@ -1,17 +1,29 @@
 .double-slider-container {
-    display: flex;
+  display: flex;
+  flex-direction: row;
 }
 
 .double-slider-body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 140px;
 }
 
-.left-arrow, .right-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: .5em;
-    margin: .2em;
-    background-color: lightgrey;
+.left-arrow,
+.right-arrow {
+  display: flex;
+
+  width: 400px;
+  height: 400px;
+}
+.right-arrow {
+  margin-left: auto;
+  background-image: url(../../public/images/pipboy-thumbsup-green.png);
+  transform: scaleX(-1);
+}
+.left-arrow {
+  /* margin-left: -5rem; */
+  background-image: url(../../public/images/pipboy-thumbsup-green.png);
 }
