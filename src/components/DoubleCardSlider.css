@@ -3,7 +3,7 @@
   flex-direction: row;
   margin-top: 6rem;
   justify-content: space-between;
-  background-image: url(../../public/images/green-screen-background.png);
+
   background-size: cover;
 }
 
@@ -33,8 +33,14 @@ body {
 }
 ul {
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin-right: 13rem;
   margin-left: 11rem;
+  font-size: 2rem;
+}
+
+li + li {
+  margin: 2rem;
 }
