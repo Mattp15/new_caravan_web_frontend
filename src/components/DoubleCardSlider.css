@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 6rem;
+  justify-content: center;
 }
 
 .double-slider-body {
@@ -9,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 140px;
+  /* padding-left: 140px; */
 }
 
 .left-arrow,
@@ -20,9 +21,10 @@
   height: 400px;
 }
 .right-arrow {
-  margin-left: auto;
+  margin-left: 600px;
   background-image: url(../../public/images/pipboy-thumbsup-green.png);
   transform: scaleX(-1);
+  z-index: 2;
 }
 .left-arrow {
   /* margin-left: -5rem; */
