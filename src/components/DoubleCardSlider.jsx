@@ -29,10 +29,8 @@ const DoubleCardSlider = (props) => {
         <div className='right-arrow' onClick={handleScrollRight}></div>
       </div>
       <ul>
-        <li>Cycle Left</li>
         <li>Select cards from the bottom row to be placed into your deck</li>
         <li>Click the card on the top row to be removed from your deck</li>
-        <li>Cycle Right</li>
       </ul>
     </div>
   );
