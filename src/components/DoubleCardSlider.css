@@ -1,6 +1,7 @@
 .double-slider-container {
   display: flex;
   flex-direction: row;
+  margin-top: 6rem;
 }
 
 .double-slider-body {
@@ -26,4 +27,24 @@
 .left-arrow {
   /* margin-left: -5rem; */
   background-image: url(../../public/images/pipboy-thumbsup-green.png);
+}
+body {
+  color: green;
+}
+ul {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  margin-right: 13rem;
+  margin-left: 11rem;
+}
+ul li:nth-child(2),
+ul li:nth-child(3) {
+  font-size: 2rem;
+  margin-top: 2rem;
+  position: absolute;
+  margin-left: 325px;
+}
+ul li:nth-child(3) {
+  margin-top: 100px;
 }

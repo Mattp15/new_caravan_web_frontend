@@ -19,17 +19,21 @@ const DoubleCardSlider = (props) => {
   };
 
   return (
-    <div className='double-slider-container'>
-      <div className='left-arrow' onClick={handleScrollLeft}>
-        {'<==='}
+    <div>
+      <div className='double-slider-container'>
+        <div className='left-arrow' onClick={handleScrollLeft}></div>
+        <div className='double-slider-body'>
+          <CardSlider offset={offset} isDeck={true} cardsInDeck={cardsInDeck} ownedCards={ownedCards} onClick={onClick} />
+          <CardSlider offset={offset} isDeck={false} cardsInDeck={cardsInDeck} ownedCards={ownedCards} onClick={onClick} />
+        </div>
+        <div className='right-arrow' onClick={handleScrollRight}></div>
       </div>
-      <div className='double-slider-body'>
-        <CardSlider offset={offset} isDeck={true} cardsInDeck={cardsInDeck} ownedCards={ownedCards} onClick={onClick} />
-        <CardSlider offset={offset} isDeck={false} cardsInDeck={cardsInDeck} ownedCards={ownedCards} onClick={onClick} />
-      </div>
-      <div className='right-arrow' onClick={handleScrollRight}>
-        {'===>'}
-      </div>
+      <ul>
+        <li>Cycle Left</li>
+        <li>Select cards from the bottom row to be placed into your deck</li>
+        <li>Click the card on the top row to be removed from your deck</li>
+        <li>Cycle Right</li>
+      </ul>
     </div>
   );
 };
