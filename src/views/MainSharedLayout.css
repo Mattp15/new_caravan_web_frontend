@@ -14,6 +14,7 @@ header {
 }
 .link {
   text-decoration: none;
+  color: rgb(25, 149, 21);
 }
 .link:visited {
   color: rgb(25, 149, 21);

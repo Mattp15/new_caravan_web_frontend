@@ -8,12 +8,14 @@ const DoubleCardSlider = (props) => {
 
   const handleScrollLeft = () => {
     let tmp = offset - 7;
+    //limits the scroll within 7 else moves to end of array
     tmp = tmp >= 0 ? tmp : 0;
     setOffset(tmp);
   };
 
   const handleScrollRight = () => {
     let tmp = offset + 7;
+    //limits the scroll within 7 else moves to end of array
     tmp = tmp < ownedCards.length - 7 ? tmp : ownedCards.length - 7;
     setOffset(tmp);
   };

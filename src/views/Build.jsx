@@ -13,11 +13,11 @@ const Build = () => {
     const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
     const sets = ['Standard', 'Gomorrah', 'Lucky_38', 'Sierra_Madre', 'Tops', 'Ultra-Luxe'];
 
-    let val = names.indexOf(a.name) - names.indexOf(b.name);
+    let val = names.indexOf(a.name) - names.indexOf(b.name); //filters by name first
     if (val !== 0) return val;
-    val = suits.indexOf(a.suit) - suits.indexOf(b.suit);
+    val = suits.indexOf(a.suit) - suits.indexOf(b.suit); //filters by suit second
     if (val !== 0) return val;
-    val = sets.indexOf(a.set) - sets.indexOf(b.set);
+    val = sets.indexOf(a.set) - sets.indexOf(b.set); //filters by set last(back of cards)
     return val;
   };
 
@@ -28,6 +28,7 @@ const Build = () => {
     return -1;
   };
 
+  //runs on load, sorts the cards into values
   useEffect(() => {
     ownedCards.sort((a, b) => compareCards(a, b));
     const tmp = [...cardsInDeck];
@@ -39,14 +40,16 @@ const Build = () => {
     setCardsInDeck(tmp);
   }, []);
 
-  //wtf does this do?
+  //array of bools, runs a toggle on click =>
   useEffect(() => {
     const tmp = { ...user };
+    //if el is true, card info get's put into temp-deck
     tmp.deck = cardsInDeck
       .map((el, idx) => {
         return el ? ownedCards[idx] : null;
       })
       .filter((el) => el !== null);
+    //if true => put card data, to keep index.length === cardsInDeck.length
     setUser(tmp);
   }, [cardsInDeck]);
 
@@ -65,6 +68,7 @@ const Build = () => {
         const tmp = [...cardsInDeck];
         tmp[idx] = !tmp[idx];
         setCardsInDeck(tmp);
+        //triggers useEffect above
       });
   };
 

@@ -24,32 +24,30 @@ const App = () => {
   return (
     <Router>
       <UserContext.Provider value={{ user, setUser }}>
-        <ContextContainer.Provider value={{ allCards, setAllCards, usersDeck, setUsersDeck }}>
-          <Routes>
-            <Route path='/' element={<MainSharedLayout />}>
-              <Route index element={<Landing />} />
-              <Route path='user/*' element={<UserRoutes />} />
-              <Route
-                path='build'
-                element={
-                  <UserProtectedRoute user={user}>
-                    <Build />
-                  </UserProtectedRoute>
-                }
-              />
-              <Route
-                path='game/*'
-                element={
-                  <UserProtectedRoute user={user}>
-                    <GameRoutes />
-                  </UserProtectedRoute>
-                }
-              />
-              <Route path='buildold' element={<GetAllCards />} />
-              <Route path='*' element={<NotFound />} />
-            </Route>
-          </Routes>
-        </ContextContainer.Provider>
+        <Routes>
+          <Route path='/' element={<MainSharedLayout />}>
+            <Route index element={<Landing />} />
+            <Route path='user/*' element={<UserRoutes />} />
+            <Route
+              path='build'
+              element={
+                <UserProtectedRoute user={user}>
+                  <Build />
+                </UserProtectedRoute>
+              }
+            />
+            <Route
+              path='game/*'
+              element={
+                <UserProtectedRoute user={user}>
+                  <GameRoutes />
+                </UserProtectedRoute>
+              }
+            />
+            <Route path='buildold' element={<GetAllCards />} />
+            <Route path='*' element={<NotFound />} />
+          </Route>
+        </Routes>
       </UserContext.Provider>
     </Router>
   );
